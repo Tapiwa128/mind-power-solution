@@ -1,0 +1,22 @@
+.expenses {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.expense-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.expense-form input {
+  padding: 8px;
+}
+
+.expense-summary {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 6px;
+}
