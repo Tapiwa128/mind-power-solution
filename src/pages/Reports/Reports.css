@@ -1,1 +1,160 @@
-.reports .total { font-weight: 700; }
+.reports-page {
+  animation: fadeIn 0.3s ease;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.report-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.report-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.report-card h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.report-value {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.income-value {
+  color: var(--success);
+}
+
+.expense-value {
+  color: var(--danger);
+}
+
+.report-label {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.expense-breakdown {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 12px;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: var(--bg-elev);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.profit-breakdown {
+  display: grid;
+  gap: 16px;
+}
+
+.profit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--bg-elev);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.profit-item.highlight {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(56, 189, 248, 0.15));
+  border-color: var(--success);
+}
+
+.net-profit {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.distribution-note {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: var(--bg-elev);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.distribution-list {
+  display: grid;
+  gap: 16px;
+}
+
+.distribution-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-elev);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.distribution-item:hover {
+  border-color: var(--primary);
+  transform: translateX(4px);
+}
+
+.dist-icon {
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border-radius: 12px;
+}
+
+.dist-details {
+  flex: 1;
+}
+
+.dist-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.dist-percent {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dist-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--success);
+}
+
+@media (max-width: 1024px) {
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
+}

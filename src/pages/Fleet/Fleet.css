@@ -1,41 +1,39 @@
-.fleet {
-  background: transparent;
-  padding: 0;
+.fleet-page {
+  animation: fadeIn 0.3s ease;
+}
+
+.fleet-form-card {
+  margin-bottom: 24px;
 }
 
 .fleet-form {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
-.fleet-form input,
-.fleet-form select {
-  padding: 8px;
+.fleet-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.fleet-form button {
-  background: var(--primary);
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  color: #00131e;
+.fleet-form .form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
 }
 
-@media (max-width: 1024px) {
-  .fleet-form { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fleet-form .form-group:last-child {
+  grid-column: 1 / -1;
 }
+
+.fleet-table-card {
+  margin-top: 24px;
+}
+
 @media (max-width: 768px) {
-  .fleet-form { grid-template-columns: 1fr; }
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  border-bottom: 1px solid var(--border);
-  padding: 10px;
+  .fleet-form {
+    grid-template-columns: 1fr;
+  }
 }
