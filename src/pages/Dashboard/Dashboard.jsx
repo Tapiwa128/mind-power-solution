@@ -68,15 +68,14 @@ const BarChart = ({ data, height = 160, color = "#22c55e" }) => {
 
 const PieChart = ({ data, radius = 70 }) => {
   const sum = data.reduce((s, d) => s + d.value, 0) || 1;
-  let acc = 0;
   const cx = radius + 6, cy = radius + 6;
   return (
     <svg width={cx * 2} height={cy * 2} viewBox={`0 0 ${cx * 2} ${cy * 2}`} style={{ width: "100%", height: "160px" }}>
       {data.map((d, i) => {
         const val = d.value / sum;
+        const acc = data.slice(0, i).reduce((sum, item) => sum + item.value / sum, 0);
         const start = acc * 2 * Math.PI;
         const end = (acc + val) * 2 * Math.PI;
-        acc += val;
         const x1 = cx + radius * Math.cos(start);
         const y1 = cy + radius * Math.sin(start);
         const x2 = cx + radius * Math.cos(end);
