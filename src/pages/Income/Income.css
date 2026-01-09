@@ -1,14 +1,13 @@
 .income {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  background: transparent;
+  padding: 0;
 }
 
 .income-form {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0 20px;
 }
 
 .income-form input {
@@ -16,8 +15,13 @@
 }
 
 .income-form button {
-  background: #22c55e;
+  background: var(--success);
   border: none;
   font-weight: bold;
   cursor: pointer;
+  color: #052e16;
+}
+
+@media (max-width: 768px) {
+  .income-form { grid-template-columns: 1fr; }
 }

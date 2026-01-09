@@ -1,12 +1,11 @@
 .fleet {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  background: transparent;
+  padding: 0;
 }
 
 .fleet-form {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -17,10 +16,18 @@
 }
 
 .fleet-form button {
-  background: #38bdf8;
+  background: var(--primary);
   border: none;
   cursor: pointer;
   font-weight: bold;
+  color: #00131e;
+}
+
+@media (max-width: 1024px) {
+  .fleet-form { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  .fleet-form { grid-template-columns: 1fr; }
 }
 
 table {
@@ -29,6 +36,6 @@ table {
 }
 
 th, td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   padding: 10px;
 }

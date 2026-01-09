@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import Login from "./pages/Login/Login";
+import React from "react";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import "./index.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
-    <>
-      {isLoggedIn ? (
+    <ThemeProvider>
+      <AuthProvider>
         <Dashboard />
-      ) : (
-        <Login onLogin={() => setIsLoggedIn(true)} />
-      )}
-    </>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
