@@ -1,13 +1,27 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useTheme } from "../../context/ThemeContext.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 const Navbar = () => {
   const { theme, toggle } = useTheme();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <div className="navbar">
       <h3>Mind Power Car Rental</h3>
       <div className="navbar-actions">
+        <div className="user-info">
+          <span className="user-name">{user?.name || "User"}</span>
+          <span className="user-role">{user?.role || "user"}</span>
+        </div>
         <button className="theme-toggle" onClick={toggle} title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {theme === "dark" ? (
@@ -17,7 +31,14 @@ const Navbar = () => {
             )}
           </svg>
         </button>
-        <span className="badge info">Admin</span>
+        <button className="logout-button" onClick={handleLogout} title="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+          <span>Logout</span>
+        </button>
       </div>
     </div>
   );

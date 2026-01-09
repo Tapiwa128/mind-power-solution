@@ -1,1 +1,64 @@
-/* Navbar styles are now in index.css */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 12px;
+  padding-right: 12px;
+  border-right: 1px solid var(--border);
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.user-role {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.logout-button {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logout-button:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--danger);
+  color: var(--danger);
+  transform: translateY(-1px);
+}
+
+.logout-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 768px) {
+  .user-info {
+    display: none;
+  }
+  
+  .logout-button span {
+    display: none;
+  }
+  
+  .logout-button {
+    padding: 8px;
+  }
+}
