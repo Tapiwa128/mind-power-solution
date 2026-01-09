@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     }
   });
 
-  const login = (email, password) => {
+  const login = (email, password, remember = true) => {
     // Default credentials - you can add more users here
     const defaultUsers = [
       { email: "admin@mindpower.com", password: "admin123", name: "Admin User", role: "admin" },
@@ -45,8 +45,14 @@ export const AuthProvider = ({ children }) => {
       const userData = { email: user.email, name: user.name, role: user.role };
       setIsLoggedIn(true);
       setUser(userData);
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("user", JSON.stringify(userData));
+      if (remember) {
+        try {
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("user", JSON.stringify(userData));
+        } catch {
+          // ignore localStorage errors
+        }
+      }
       return { success: true, user: userData };
     } else {
       return { success: false, error: "Invalid email or password" };

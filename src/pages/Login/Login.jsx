@@ -8,19 +8,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [remember, setRemember] = useState(false);
   const { login, isLoggedIn } = useAuth();
   const navigate = useNavigate();
-
-  // Quick login function for testing
-  const quickLogin = (userType = "admin") => {
-    if (userType === "admin") {
-      setEmail("admin@mindpower.com");
-      setPassword("admin123");
-    } else {
-      setEmail("user@mindpower.com");
-      setPassword("user123");
-    }
-  };
 
   // Redirect if already logged in
   useEffect(() => {
@@ -38,7 +28,7 @@ const Login = () => {
     await new Promise(resolve => setTimeout(resolve, 500));
 
     try {
-      const result = login(email, password);
+      const result = login(email, password, remember);
       
       if (result.success) {
         // Redirect to dashboard (root path) after successful login
@@ -46,7 +36,7 @@ const Login = () => {
       } else {
         setError(result.error || "Invalid email or password");
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred during login");
     } finally {
       setLoading(false);
@@ -58,7 +48,7 @@ const Login = () => {
       <div className="login-container">
         <div className="login-card">
           <div className="login-header">
-            <div className="login-logo">🚗</div>
+          
             <h1>Mind Power Solutions</h1>
             <p className="login-subtitle">Car Rental Management System</p>
           </div>
@@ -81,7 +71,6 @@ const Login = () => {
                 required
                 disabled={loading}
                 autoComplete="email"
-                autoFocus
               />
             </div>
 
@@ -98,6 +87,7 @@ const Login = () => {
                 autoComplete="current-password"
               />
             </div>
+           
 
             <button 
               type="submit" 
@@ -107,46 +97,9 @@ const Login = () => {
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>
-
-          <div className="login-footer">
-            <div className="default-credentials">
-              <p className="credentials-title">🔐 Default Login Credentials</p>
-              <div className="credentials-list">
-                <div className="credential-item">
-                  <span className="credential-label">👤 Admin Account:</span>
-                  <div className="credential-details">
-                    <span className="credential-email">admin@mindpower.com</span>
-                    <span className="credential-separator">/</span>
-                    <span className="credential-password">admin123</span>
-                  </div>
-                  <button 
-                    type="button"
-                    className="quick-login-btn"
-                    onClick={() => quickLogin("admin")}
-                    disabled={loading}
-                  >
-                    Use This
-                  </button>
-                </div>
-                <div className="credential-item">
-                  <span className="credential-label">👤 User Account:</span>
-                  <div className="credential-details">
-                    <span className="credential-email">user@mindpower.com</span>
-                    <span className="credential-separator">/</span>
-                    <span className="credential-password">user123</span>
-                  </div>
-                  <button 
-                    type="button"
-                    className="quick-login-btn"
-                    onClick={() => quickLogin("user")}
-                    disabled={loading}
-                  >
-                    Use This
-                  </button>
-                </div>
-              </div>
-              <p className="credentials-note">Click "Use This" to auto-fill credentials</p>
-            </div>
+          {/* simplified footer for a clean form */}
+          <div className="login-footer" style={{textAlign: 'center', marginTop: 20}}>
+            <small style={{color: 'var(--muted)'}}>© {new Date().getFullYear()} Mind Power Solutions</small>
           </div>
         </div>
       </div>
