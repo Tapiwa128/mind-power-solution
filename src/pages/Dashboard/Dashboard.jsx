@@ -6,6 +6,8 @@ import Fleet from "../Fleet/Fleet";
 import Income from "../Income/Income";
 import Expenses from "../Expenses/Expenses";
 import Reports from "../Reports/Reports";
+import Profit from "../Profit/Profit";
+
 
 import "./Dashboard.css";
 
@@ -18,6 +20,9 @@ const Dashboard = () => {
         return <Fleet />;
       case "income":
         return <Income />;
+      case "profit":
+        return <Profit />;
+
       case "expenses":
         return <Expenses />;
       case "reports":

@@ -1,0 +1,17 @@
+.profit {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.profit-card,
+.profit-split {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.profit-split p {
+  font-weight: bold;
+}
